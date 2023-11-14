@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <button onclick="checked()">check</button>
+</head>
+<body>
+  
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import { getAuth, signInWithPopup, GithubAuthProvider, } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDLoaO2XEhJJG_eUETz99Ul2x-k494SkzM",
+      authDomain: "git-auth-203c9.firebaseapp.com",
+      projectId: "git-auth-203c9",
+      storageBucket: "git-auth-203c9.appspot.com",
+      messagingSenderId: "178863975127",
+      appId: "1:178863975127:web:694e59ead73cfb95b09e92"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GithubAuthProvider();
+
+    const checked = () => {
+      // alert('checked')
+      signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) =>{
+        console.log(error)})
+      }
+
+      window.checked=checked
+  </script>
+</body>
+</html>
